@@ -118,9 +118,106 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &384595669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 384595671}
+  - component: {fileID: 384595670}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &384595670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384595669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff318aaf9a5ce4e4e8417ed4a6a88654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  columns: 50
+  rows: 50
+  numRooms:
+    m_Min: 15
+    m_Max: 20
+  roomWidth:
+    m_Min: 3
+    m_Max: 10
+  roomHeight:
+    m_Min: 3
+    m_Max: 10
+  corridorLength:
+    m_Min: 6
+    m_Max: 10
+  monstersPerRoom:
+    m_Min: 0
+    m_Max: 0
+  goldPerRoom:
+    m_Min: 0
+    m_Max: 0
+  potionsPerRoom:
+    m_Min: 0
+    m_Max: 0
+  chestsPerRoom:
+    m_Min: 0
+    m_Max: 0
+  floorTiles:
+  - {fileID: 2813074450224336906, guid: 0a819db2c0d1d497b9efa0e021ffbcaf, type: 3}
+  - {fileID: 2821151095402285693, guid: 8ecd8680153624277a46ba2d28a3cb69, type: 3}
+  - {fileID: 4984008704780019659, guid: ec6cb7e3b60dc4714b1dcf51ca4811a7, type: 3}
+  - {fileID: 229321261392101879, guid: e775520f8465e4900a7eada425237ca0, type: 3}
+  - {fileID: 1729509143637847532, guid: e62c963b40d3845d79c1ff915bc3aa0b, type: 3}
+  wallTiles:
+  - {fileID: 7912276209429586319, guid: 15402c23814d34de599f2ca2e0dfa247, type: 3}
+  outerWallTiles:
+  - {fileID: 1890462684381847973, guid: 97b0a7fc915954b9ea324a9c23ea7f5a, type: 3}
+  player: {fileID: 0}
+  TL: {fileID: 0}
+  TR: {fileID: 0}
+  Vert: {fileID: 0}
+  Horz: {fileID: 0}
+  BL: {fileID: 0}
+  BR: {fileID: 0}
+  Single: {fileID: 0}
+  Tee: {fileID: 0}
+  Void: {fileID: 0}
+  Potion: {fileID: 0}
+  Gold: {fileID: 0}
+  monsters: []
+  Chest: {fileID: 0}
+  Door: {fileID: 0}
+  Exit: {fileID: 0}
+--- !u!4 &384595671
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384595669}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 74.22142, y: 54.42777, z: -37.996063}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

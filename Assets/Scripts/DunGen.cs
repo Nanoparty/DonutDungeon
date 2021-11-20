@@ -27,7 +27,6 @@ public class DunGen : MonoBehaviour
 
     //Map Object Arrays
     private TileType[][] tiles;                           
-    private TileType[][] spawnTiles;
     //private Room[] rooms;                             
     //private Corridor[] corridors;                      
     private GameObject DungeonMap;                        
@@ -76,35 +75,54 @@ public class DunGen : MonoBehaviour
     void SetupTilesArray()
     {
         tiles = new TileType[columns][];
-        spawnTiles = new TileType[columns][];
 
         for (int i = 0; i < tiles.Length; i++)
         {
             tiles[i] = new TileType[rows];
-            spawnTiles[i] = new TileType[rows];
         }
     }
 
     void InitalizeWalls(){
         for (int i = 0; i < tiles.Length; i++){
             for( int j = 0; j < tiles[i].Length; j++){
-                tiles[i][j] = TileType.Floor;
+                tiles[i][j] = TileType.Void;
             }
         }
     }
 
     void CreateRooms(){
-        for(int i = 0; i < numRooms.Random; i++){
+        int rooms = numRooms.Random;
+        for(int i = 0; i < rooms; i++){
             int width = roomWidth.Random;
             int height = roomHeight.Random;
-            int baseRow = new IntRange(0, rows-height).Random;
-            int baseCol = new IntRange(0, columns-width).Random;
+            int baseRow = new IntRange(1, rows-height-1).Random;
+            int baseCol = new IntRange(1, columns-width-1).Random;
 
-            for(int k = baseCol; k < width; k++){
-                for(int j = baseRow; j < height; j++){
+            
+
+            for(int k = baseRow; k < baseRow+height; k++){
+                for(int j = baseCol; j < baseCol+width; j++){
+                    Debug.Log("Setting "+ k + " " +j);
                     tiles[k][j] = TileType.Floor;
                 }
             }
+
+            for(int k = baseRow-1; k < baseRow+height+1;k++){
+                SetWall(k, baseCol-1);
+                SetWall(k, baseCol+width);
+            }
+            for(int j = baseCol-1; j < baseCol+width+1; j++){
+                SetWall(baseRow-1, j);
+                SetWall(baseRow+height, j);
+            }
+            
+
+        }
+    }
+
+    void SetWall(int i, int j){
+        if(tiles[i][j] != TileType.Floor){
+            tiles[i][j] = TileType.Wall;
         }
     }
 
@@ -120,7 +138,11 @@ public class DunGen : MonoBehaviour
 
                 if (tiles[i][j] == TileType.Wall)
                 {
+                    Debug.Log("Its a WALL");
                     InstantiateFromArray(wallTiles, i, j);
+                }
+                if (tiles[i][j] == TileType.Void){
+                    InstantiateFromArray(outerWallTiles, i , j);
                 }
 
                 // if(spawnTiles[i][j] == TileType.corridorFloor)
